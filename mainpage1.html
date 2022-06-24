@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style-nav.css">
+    <link rel="icon" href="images/output-onlinepngtools.png">
+    <meta charset="UTF-8">
+    <title>MainPage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: rgb(207, 212, 255);
+            background: linear-gradient(0deg, rgb(205, 209, 247) 0%, rgb(204, 206, 248) 100%);
+            margin: 0;
+        }
+
+        .first {
+            width: 80px;
+        }
+
+        .nav1 {
+            padding: 1px 25px;
+            background: #0f0c29;
+            background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+            background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-list li {
+            margin-left: 30px;
+        }
+
+        .nav-list li a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .nav-list li a:hover {
+            color: #cdc7d8;
+        }
+
+
+        #hamburger-toggle {
+            display: none;
+        }
+
+        .hamburger {
+            width: 30px;
+            height: 30px;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            position: absolute;
+            right: 25px;
+        }
+
+        .hamburger .bar {
+            display: inline-block;
+            width: 30px;
+            height: 2px;
+            background-color: #fff;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .hamburger .bar::before,
+        .hamburger .bar::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            transition: all 0.3s;
+        }
+
+        .hamburger .bar::before {
+            transform: translateY(-10px);
+        }
+
+        .hamburger .bar::after {
+            transform: translateY(10px);
+        }
+
+        @media (max-width: 600px) {
+            .nav-list {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+                z-index: 10;
+                background-color: firebrick;
+            }
+
+            .nav-list li {
+                margin: 10px 0;
+            }
+
+            .nav-list li a {
+                display: inline-block;
+                font-size: 20px;
+                padding: 15px 2px;
+                transition: all 0.3s;
+                color: #e0d6f0;
+            }
+
+            .nav-list li a:hover {
+                color: #cdc7d8;
+                transform: translateY(-10px);
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 999;
+            }
+
+            #hamburger-toggle:checked~.nav-list {
+                transform: none;
+            }
+
+            #hamburger-toggle:checked~.hamburger.bar {
+                background-color: transparent;
+            }
+
+            #hamburger-toggle:checked~.hamburger.bar::before {
+                transform: rotate(45deg);
+            }
+
+            #hamburger-toggle:checked~.hamburger.bar::after {
+                transform: rotate(-45deg);
+            }
+        }
+
+        .slideshow {
+            width: 100%;
+            height: 400px;
+            padding: 15px;
+        }
+
+        .slide-wrapper {
+            width: 60%;
+            height: 100%;
+            overflow: hidden;
+            float: right;
+            border-radius: 8px;
+        }
+
+        figure {
+            margin: 0;
+        }
+
+        .fig1 {
+            position: relative;
+            height: 100%;
+            width: 500%;
+            animation: 10s slider infinite;
+        }
+
+        .fig1 figure {
+            width: 20%;
+            height: 100%;
+            display: inline-block;
+            position: inherit;
+        }
+
+        .fig1 img {
+            float: left;
+            height: 100%;
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .fig1 figcaption {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            width: 100%;
+            font-size: 1rem;
+            padding: .6rem;
+            transition: .5s bottom;
+            opacity: 0;
+            -webkit-transition: all 0.6s ease;
+            text-align: center;
+
+        }
+
+        .fig1:hover figcaption {
+            opacity: 1;
+            left: 0;
+            text-align: center;
+        }
+
+        @keyframes slider {
+            0% {
+                left: 0;
+            }
+
+            20% {
+                left: 0;
+            }
+
+            25% {
+                left: -100%;
+            }
+
+            45% {
+                left: -100%;
+            }
+
+            50% {
+                left: -200%;
+            }
+
+            70% {
+                left: -200%;
+            }
+            85% {
+                left: -300%;
+            }
+            100% {
+                left: -300%;
+            }
+
+        }
+
+        .container {
+            width: 40%;
+            height: 100%;
+            float: left;
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+            padding: 15px;
+        }
+
+        .nSlide1 {
+            border-radius: 8px;
+            width: 100%;
+            height: 50%;
+            background-image: radial-gradient(circle farthest-corner at 1.3% 2.8%, rgba(239, 249, 249, 1) 0%, rgba(182, 199, 226, 1) 100.2%);
+        }
+
+        .nSlide2 {
+            border-radius: 8px;
+            width: 100%;
+            height: 55%;
+            background-image: radial-gradient(circle farthest-corner at 1.3% 2.8%, rgba(239, 249, 249, 1) 0%, rgba(182, 199, 226, 1) 100.2%);
+        }
+
+        .images2 {
+            display: block;
+            width: 35%;
+            height: 195px;
+            padding: 10px;
+            float: right;
+        }
+
+        .container a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            display: block;
+        }
+
+        .container h1,
+        h2 {
+            font-size: 14px;
+        }
+
+
+        .container1 {
+            padding: 15px;
+            height: 720px;
+            width: 66.66%;
+            display: flex;
+            flex-direction: column;
+            float: right;
+        }
+
+        .container a:hover {
+            color: red;
+        }
+
+        .btn-grad {
+            background: #e52d27;
+            background: -webkit-linear-gradient(to right, #b31217, #e52d27);
+            background: linear-gradient(to right, #b31217, #e52d27);
+        }
+
+        .btn-grad {
+            padding: 7px 45px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            border-radius: 10px;
+            display: block;
+            margin: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .btn-grad:hover {
+            background-position: right center;
+            color: #fff;
+            text-decoration: none;
+        }
+
+
+        .new1 {
+            height: 160px;
+            width: 100%;
+            text-align: right;
+            float: right;
+            border-radius: 8px;
+            background-image: radial-gradient(circle farthest-corner at 1.3% 2.8%, rgba(239, 249, 249, 1) 0%, rgba(182, 199, 226, 1) 100.2%);
+        }
+
+        .new2 {
+            height: 180px;
+            width: 100%;
+            text-align: right;
+            float: right;
+            background-image: radial-gradient(circle farthest-corner at 1.3% 2.8%, rgba(239, 249, 249, 1) 0%, rgba(182, 199, 226, 1) 100.2%);
+        }
+
+        .new3 {
+            height: 180px;
+            width: 100%;
+            text-align: right;
+            float: right;
+            background-image: radial-gradient(circle farthest-corner at 1.3% 2.8%, rgba(239, 249, 249, 1) 0%, rgba(182, 199, 226, 1) 100.2%);
+        }
+
+        .new4 {
+            height: 200px;
+            width: 100%;
+            text-align: right;
+            float: right;
+            border-radius: 8px;
+            background-image: radial-gradient(circle farthest-corner at 1.3% 2.8%, rgba(239, 249, 249, 1) 0%, rgba(182, 199, 226, 1) 100.2%);
+        }
+
+        .container1 a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            display: block;
+        }
+
+        .container1 h3,
+        h4,
+        h5,
+        h6 {
+            font-size: 14px;
+        }
+
+        .container1 a:hover {
+            color: red;
+        }
+
+        .images3 {
+            display: block;
+            width: 30%;
+            height: 170px;
+            padding: 10px;
+            float: right;
+        }
+
+        .container2 {
+            padding: 15px;
+            text-align: right;
+            height: 400px;
+            width: 33.33%;
+            float: right;
+            border-radius: 8px;
+            background-image: radial-gradient(circle farthest-corner at 1.3% 2.8%, rgba(239, 249, 249, 1) 0%, rgba(182, 199, 226, 1) 100.2%);
+        }
+
+        .images4 {
+            width: 50%;
+            float: right;
+            height: 300px;
+            padding: 10px;
+            display: block;
+        }
+
+        .container2 a {
+            text-decoration: none;
+            color: black;
+            font-size: 18px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            display: block;
+        }
+
+        .container2 a:hover {
+            color: red;
+        }
+
+        .container2 h1 {
+            font-size: 13px;
+        }
+
+        .container3 {
+            height: 320px;
+            width: 33.33%;
+            float: right;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .gifSlide {
+            float: left;
+            height: 320px;
+            width: 33.33%;
+            border-radius: 8px;
+        }
+
+        .gifs {
+            width: calc(75% * 4);
+            animation: gifSlide 10s ease infinite;
+        }
+
+        .gifNumber {
+            height: 320px;
+            width: 100%;
+        }
+
+        @keyframes gifSlide {
+            0% {
+                margin-left: 0;
+            }
+
+            20% {
+                margin-left: calc(-100%*1);
+            }
+
+            40% {
+                margin-left: calc(-100%*2);
+            }
+        }
+
+        #b1 {
+            background-image: linear-gradient(to right, #ECE9E6 0%, #FFFFFF 51%, #ECE9E6 100%)
+        }
+
+        #b1 {
+            margin: 10px;
+            padding: 1px 15px;
+            border-radius: 5px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: rgb(0, 0, 0);
+            display: block;
+            margin-left: 20px;
+            margin-top: 35px;
+            float: left;
+            border-color: #ffffff;
+        }
+
+        #b1:hover {
+            background-position: right center;
+            color: rgb(255, 254, 254);
+            text-decoration: none;
+        }
+
+        .footer1 {
+            width: 100%;
+            background: #0f0c29;
+            background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+            background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+        }
+
+        .container5 {
+            padding: 25px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #0f0c29;
+            background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+            background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+        }
+
+        .logo1 {
+            width: 120px;
+            height: 120px;
+        }
+
+        .navlist2 {
+            list-style: none;
+            padding-right: 100px;
+        }
+
+        .navlist1 {
+            list-style: none;
+            text-align: center;
+            top: 90px;
+        }
+
+        .navlist1 a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .navlist1 a:hover {
+            color: red;
+        }
+
+        .logo2 {
+            width: 50px;
+        }
+
+        .logo3 {
+            width: 50px;
+            margin-top: 10px;
+        }
+        input[type=text] {
+            width: 130px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            background-color:#b31217;
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+        }
+
+        input[type=text]:focus {
+            width: 100%;
+            background-color: #200122;
+        }
+        @media only screen and (max-width: 768px) {
+            .slide-wrapper {
+                width: 100%;
+                height: 300px;
+            }
+
+            figure {
+                margin: 0;
+            }
+
+            .fig1 {
+                position: relative;
+                height: 100%;
+                width: 500%;
+                animation: 10s slider1 infinite;
+            }
+
+            .fig1 figure {
+                width: 20%;
+                height: 100%;
+                display: inline-block;
+                position: inherit;
+            }
+
+            .fig1 img {
+                float: left;
+                height: 100%;
+                width: 100%;
+                border-radius: 8px;
+            }
+
+            .fig1 figcaption {
+                position: absolute;
+                bottom: 0;
+                background: rgba(0, 0, 0, 0.3);
+                color: #fff;
+                width: 100%;
+                font-size: 2rem;
+                padding: .6rem;
+                transition: .5s bottom;
+                opacity: 0;
+                -webkit-transition: all 0.6s ease;
+
+            }
+
+            .fig1:hover figcaption {
+                opacity: 1;
+                left: 0;
+            }
+
+            @keyframes slider1 {
+                0% {
+                    left: 0;
+                }
+
+                20% {
+                    left: 0;
+                }
+
+                25% {
+                    left: -100%;
+                }
+
+                45% {
+                    left: -100%;
+                }
+
+                50% {
+                    left: -200%;
+                }
+
+                70% {
+                    left: -200%;
+                }
+                85% {
+                    left: -300%;
+                }
+                100% {
+                    left: -300%;
+                }
+            }
+
+            .container {
+                width: 100%;
+                height: 400px;
+            }
+
+            .container1 {
+                width: 100%;
+                height: 900px;
+                display: flex;
+            }
+
+            .new1 {
+                width: 100%;
+                height: 225px;
+            }
+
+            .new2 {
+                width: 100%;
+                height: 225px;
+            }
+
+            .new3 {
+                width: 100%;
+                height: 225px;
+            }
+
+            .new4 {
+                width: 100%;
+                height: 225px;
+            }
+
+            .container2 {
+                width: 100%;
+                height: 350px;
+            }
+
+            .container3 {
+                width: 100%;
+                height: 350px;
+            }
+            .footer1 {
+                height: 300px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="nav1">
+        <img class='first' src='images/output-onlinepngtools.png' alt="">
+        <input type="checkbox" id="hamburger-toggle">
+        <label for="hamburger-toggle" class="hamburger">
+            <span class="bar"></span>
+        </label>
+        <ul class="nav-list">
+            <li><a href="News.html" target="_blank">لیست اخبار</a></li>
+            <li><a href="Login.html" target="_blank">ورود</a></li>
+            <li><a href="SignUp.html" target="_blank">ثبت نام</a></li>
+        </ul>
+    </nav>
+    <div class="slideshow">
+        <div class="slide-wrapper">
+            <figure class="fig1">
+
+                <figure>
+                    <a href="Read%20more1.html" target="_blank"><img src="images/1.jpg" alt=""></a>
+                    <figcaption>لیونل مسی برنده توپ طلا و بهترین بازیکن جهان شد
+                        </a></figcaption>
+                </figure>
+
+                <figure>
+                    <a href="Read%20more5.html" target="_blank"><img
+                            src="images/scientists-want-to-make-mars-conducive-to-life-with-an-artificial-magnetosphere_resize_md.jpg"
+                            alt=""></a>
+                    <figcaption>ایده دانشمندان برای قابل سکونت کردن مریخ با استفاده از میدان
+                        مغناطیسی
+                        مصنوعی</figcaption>
+                </figure>
+
+                <figure>
+                    <a href="Read%20more4.html" target="_blank"><img src="images/2935890.jpg" alt=""></a>
+                    <figcaption>تغییر مسیر هواپیمای حامل وزیر خارجه سوییس از چین به روسیه</figcaption>
+                </figure>
+
+                <figure>
+                    <a href="Read%20more10.html" target="_blank"><img src="images/40.jpg"
+                            alt=""></a>
+                    <figcaption>موج جدی شیوع کرونا در اروپا؛ بازگشت محدودیت‌ها به هلند
+                        </figcaption>
+                </figure>
+
+            </figure>
+        </div>
+        <div class="container">
+            <div class="nSlide1">
+                <a href="Read%20more8.html" target="_blank">
+                    <img class='images2' src="images/14000830-49ba1847.jpg" alt="">
+                </a>
+                <a href="Read%20more8.html" target="_blank">
+                    کشف ستاره‌های رادیویی داغ‌تر از خورشید
+                </a>
+                <h1>
+                    گروهی از ستاره شناسان "مرکز ملی اخترفیزیک رادیویی مستقر در پونا"(NCRA-TIFR) در مطالعه
+                    اخیرشان
+                    گروه
+                    نادری از ستاره‌های رادیویی که داغ‌تر از خورشید هستند را کشف کرده‌اند
+                </h1>
+            </div>
+            <div class="nSlide2">
+                <a href="Read%20more7.html" target="_blank">
+                    <img class='images2' src="images/7.jpg" alt="">
+                </a>
+                <a href="Read%20more7.html" target="_blank">
+                    علی دایی اول، علی پروین بیستم / 20 ملی پوش برتر ایران از نظر تعداد بازی
+                </a>
+                <h2>در آخرین به روز رسانی تعداد بازی ملی برترین های تاریخ فوتبال ملی، علی دایی در رده اول و
+                    علی
+                    پروین در
+                    رده بیستم قرار دارند</h2>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="container1">
+        <div class="btn-grad">اخبار پر بازدید</div>
+        <div class="new1">
+            <a href="Read%20more3.html" target="_blank"><img class='images3' src="images/773x435_cmsv2_201e1461-1005-5008-af7a-6bf161ebef6b-6264662.jpg"
+                    alt=''></a>
+            <a href="Read%20more3.html" target="_blank">پاپ در بازگشت از قبرس تعدادی پناهجو را با خود به ایتالیا می‌آورد</a>
+            <h3>پاپ فرانسیس، رهبر کاتولیک‌های جهان قصد دارد در سفر خود به قبرس تعدادی از پناهجویان را از این کشور
+                خارج وهمراه خود به ایتالیا بیاورد.</h3>
+            <a href="Read%20more3.html" target="_blank"><button id="b1">ادامه مطلب</button></a>
+        </div>
+        <div class="new2">
+            <a href="Read%20more11.html" target="_blank">
+                <img class='images3' src='images/008-93t4478.jpg' alt=''>
+            </a>
+            <a href="Read%20more11.html" target="_blank">جنگ جهانی سوم در فضا!؟</a>
+            <h4>در این گزارش به بررسی این موضوع می‌پردازیم که چرا منفجر شدن ماهواره‌ها پس از پایان عمرشان برای
+                ایستگاه فضایی خطرناک است و این مسئله چگونه می‌تواند به یک فاجعه جهانی تبدیل شود. </h4>
+            <a href="Read%20more11.html" target="_blank"><button id="b1">ادامه مطلب</button></a>
+        </div>
+        <div class="new3">
+            <a href="Read%20more9.html" target="_blank"><img class='images3' src='images/773x435_cmsv2_fcb58e32-a687-5ed2-9a03-3e78cdc2f489-6264706.jpg'
+                    alt=''></a>
+            <a href="Read%20more9.html" target="_blank">هشدار ناتو: حمله روسیه به اوکراین برای مسکو بدون تبعات و هزینه نخواهد بود</a>
+            <h5>
+                با افزایش نگرانی‌ها در پی استقرار هزاران نیروی نظامی روسیه در نزدیکی مرز اوکراین، ینس استولتنبرگ،
+                دبیرکل ناتو روز جمعه به روسیه هشدار داد که هرگونه تلاش برای حمله به اوکراین هزینه‌هایی را در پی
+                خواهد داشت.
+            </h5>
+            <a href="Read%20more9.html" target="_blank"><button id="b1">ادامه مطلب</button></a>
+        </div>
+        <div class="new4">
+            <a href="Read%20more2.html" target="_blank"> <img class='images3' src='images/3.png' alt=''></a>
+            <a href="Read%20more2.html" target="_blank">بارسا به لیگ اروپا برود، شاید بالاخره یک جام بگیرد </a>
+            <h6>
+                لوئیس ماسکارو سردبیر دیاریو اسپورت معتقد است رفتن بارسا به لیگ اروپا چندان هم بد نخواهد بود
+            </h6>
+            <a href="Read%20more2.html" target="_blank"><button id="b1">ادامه مطلب</button></a>
+        </div>
+    </div>
+    <div class="container2">
+        <div class="btn-grad">خبر فوری</div>
+        <br>
+        <a href="Read%20more12.html" target="_blank">
+            <img class='images4' src='images/168809308.jpg' alt="">
+        </a>
+        <a href="Read%20more12.html" target="_blank">آیا سویه جدید کرونا در آفریقای جنوبی از جهش‌های قبلی خطرناکتر است؟</a>
+        <h1>
+            تهران- ایرنا- مسوول آزمایشگاه مرجع کشوری کووید ۱۹ انستیتو پاستور ایران گفت: وجود جهش‌های متعدد در ژنوم
+            ویروس کرونا و شواهد انتشار سریع آن بیانگر این است که سویه (واریانت) جدید در آفریقای جنوبی از گونه‌های
+            قبلی خطرناکتر است.
+        </h1>
+    </div>
+    <div class="container3">
+        <div class='gifs'>
+            <div class='gifSlide'>
+                <a href="https://ebanking.sbank.ir/IB-New/login/loginPage.action?ibReq=WEB" target="_blank"> <img
+                        src='images/57745383.gif' class='gifNumber' alt=""></a>
+            </div>
+            <div class="gifSlide">
+                <a href="https://www.mvmco.ir/" target="_blank"><img src='images/14000824000186_Test.gif' class=' gifNumber' alt=""></a>
+            </div>
+            <div class="gifSlide">
+                <a href="https://www.asiatech.ir/" target="_blank"> <img src='images/62032391.gif' class='gifNumber' alt=""></a>
+            </div>
+
+        </div>
+    </div>
+    <form>
+        <input type="text" name="search" placeholder="Search..">
+    </form>
+    <footer class="footer1">
+        <nav class='container5'>
+            <img class="logo1" src='images/output-onlinepngtools.png' alt="">
+            <ul class="navlist1">
+                <li><a href="mailto:thisiskalan80@yahoo.com" class='email'>thisiskalan80@yahoo.com</a></li>
+                <li><a href="mailto:avafi869@gmail.com" class='email'>avafi869@gmail.com</a></li>
+                <li><a href="tel:0911671967" class='email'>09116791967</a></li>
+                <li><a href="tel:09216342028" class='email'>09216342028</a></li>
+            </ul>
+            <ul class="navlist2">
+                <li><a href="#"><img src='images/900px-Instagram_icon.png' class='logo2' alt=""></a></li>
+                <li><a href="#"><img src='images/1024px-Telegram_logo.svg.png' class='logo3' alt=""></a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+</html>
