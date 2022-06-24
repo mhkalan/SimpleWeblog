@@ -1,0 +1,111 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+body
+{
+    background: #0f0c29;
+    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    display: grid;
+    height: 100vh;
+    margin: 0;
+    place-items: center;
+}
+.wrapper
+{
+    position: relative;
+}
+.circle
+{
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    background: black;
+    border-radius: 50%;
+}
+h1
+{
+    color: #fff;
+    text-align: center;
+    letter-spacing: -2px;
+}
+.circle1
+{
+    background: #302b63;
+    right: -60px;
+    top: -60px;
+}
+.circle2
+{
+    background: #0f0c29;
+    bottom: -60px;
+    left: -60px;
+}
+.form
+{
+    position: relative;
+    width: 400px;
+    height: 400px;
+    display: grid;
+    place-content: center;
+    background: rgba(225,225,225,0.1);
+    border-top: 1px solid rgba(225,225,225,0.5);
+    border-left: 1px solid rgba(225,225,225,0.3);
+    border-right: 1px solid rgba(225,225,225,0.3);
+    border-bottom: 1px solid rgba(225,225,225,0.2);
+    border-radius: 12px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 26px 42px rgba(0,0,0,0.1);
+}
+input
+{
+    direction: rtl;
+}
+input,button
+{
+    font-size: 16px;
+    display: block;
+    box-sizing: border-box;
+    border-radius: 12px;
+    border: none;
+    width: 100%;
+    margin: 20px auto;
+    padding: 12px 20px;
+    background: rgba(225,225,225,0.1);
+    border-top: 1px solid rgba(225,225,225,0.2);
+    box-shadow: 0 13px 21px rgba(0,0,0,0.1);
+}
+input:focus
+{
+    outline: none;
+}
+button
+{
+    cursor: pointer;
+    background: #0575e6;
+    color: #fff;
+    transition: 0.5s;
+}
+button:hover
+{
+    background: #e52d27;
+    background: -webkit-linear-gradient(to right, #b31217, #e52d27);
+    background: linear-gradient(to right, #b31217, #e52d27);
+}
+input::placeholder
+{
+    color: #fff;
+}
+.forget-signup
+{
+    display: flex;
+    justify-content: space-between;
+}
+a
+{
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
