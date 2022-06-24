@@ -1,0 +1,135 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.nav1 {
+    padding: 1px 25px;
+    background: #0f0c29;
+    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+}
+
+.nav-list li {
+    margin-left: 30px;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.nav-list li a:hover {
+    color: #cdc7d8;
+}
+
+
+#hamburger-toggle {
+    display: none;
+}
+
+.hamburger {
+    width: 30px;
+    height: 30px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    right: 25px;
+}
+
+.hamburger .bar {
+    display: inline-block;
+    width: 30px;
+    height: 2px;
+    background-color: #fff;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.hamburger .bar::before,
+.hamburger .bar::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    transition: all 0.3s;
+}
+
+.hamburger .bar::before {
+    transform: translateY(-10px);
+}
+
+.hamburger .bar::after {
+    transform: translateY(10px);
+}
+
+@media (max-width: 600px) {
+    .nav-list {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(-100%);
+        transition: transform 0.3s;
+        background: #0f0c29;
+        background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+        background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+        z-index: 10;
+    }
+
+    .nav-list li {
+        margin: 10px 0;
+    }
+
+    .nav-list li a {
+        display: inline-block;
+        font-size: 20px;
+        padding: 15px 2px;
+        transition: all 0.3s;
+        color: #e0d6f0;
+    }
+
+    .nav-list li a:hover {
+        color: #cdc7d8;
+        transform: translateY(-10px);
+    }
+
+    .hamburger {
+        display: flex;
+        z-index: 999;
+    }
+
+    #hamburger-toggle:checked~.nav-list {
+        transform: none;
+    }
+
+    #hamburger-toggle:checked~.hamburger.bar {
+        background-color: transparent;
+    }
+
+    #hamburger-toggle:checked~.hamburger.bar::before {
+        transform: rotate(45deg);
+    }
+
+    #hamburger-toggle:checked~.hamburger.bar::after {
+        transform: rotate(-45deg);
+    }
+}
